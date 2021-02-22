@@ -1,0 +1,20 @@
+<table class="table  table-striped " >
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let or of Org"  >
+
+      <td><a [routerLink]="['/Departement/',or.id]"  >
+        {{or.name}}
+      </a></td>
+
+
+    </tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<label class="z">Selct Organization Permation:</label>
+<ng-multiselect-dropdown
+  [placeholder]="'search'"
+  [data]="dropdownListForOrg"
+  [(ngModel)]="selectedItemsForOrg"
+  [settings]="dropdownSettingsFororg"
+
+>
+</ng-multiselect-dropdown>
+<label >Selct User Permation:</label>
+<ng-multiselect-dropdown
+  [placeholder]="'search'"
+[data]="dropdownListForUsers"
+  [(ngModel)]="selectedItemsForUsers"
+  [settings]="dropdownSettingForUsers"
+
+>
+</ng-multiselect-dropdown>
+<div class="form-group text-center">
+  <button [disabled]="check()" (click)="Add()" style="font-weight:bold;font-family:'JF Flat';margin-top:150px;" class="btn btn-primary btn-lg" type="button">Add</button>
+  <button (click)="cancel()" style="font-weight:bold;font-family:'JF Flat';margin-top:150px;" class="btn btn-primary btn-lg ml-2" type="button">Cancel
+    </button>
+</div>

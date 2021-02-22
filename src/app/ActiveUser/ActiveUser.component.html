@@ -1,0 +1,21 @@
+
+<table class="table table-striped " >
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Active</th>
+      <th scope="col">Deactive</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users"  >
+
+      <td>{{user.username}}</td>
+
+      <td><button type="button" class="btn btn btn-success"(click)="Active(user.id);" >Active</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="Deactive(user.id);">Deactive</button></td>
+    </tr>
+
+  </tbody>
+</table>

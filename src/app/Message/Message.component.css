@@ -1,0 +1,14 @@
+.z{
+  display: inline-block;
+}
+
+input,textarea{
+  width: 50%;
+}
+
+
+div.multiselect-dropdown{
+  width: 160%;
+}
+
+

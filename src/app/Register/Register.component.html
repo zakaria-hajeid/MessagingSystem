@@ -1,0 +1,90 @@
+<form style="margin-top:10%;" (ngSubmit)="register()" [formGroup]="registerForm" class="rtl">
+  <div class="form-group">
+    <input formControlName="username" type="text" [ngClass]="{'is-invalid' : registerForm.get('username').errors && registerForm.get('username').touched}"
+       placeholder="User Name ">
+    <div class="invalid-feedback"> Enter the User Name</div>
+  </div>
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('name').errors && registerForm.get('name').touched}"
+      placeholder="name" formControlName="name" type="text" >
+    <div class="invalid-feedback" *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')">Enter the name</div>
+  </div>
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}" class=""
+      placeholder="Email" formControlName="email">
+    <div class="invalid-feedback" *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')">Enter the email
+      </div>
+  </div>
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('phone').errors && registerForm.get('phone').touched}" class=""
+      placeholder="Phone" formControlName="phone">
+    <div class="invalid-feedback" *ngIf="registerForm.get('phone').touched && registerForm.get('phone').hasError('required')">Enter the phone</div>
+  </div>
+ <!-- <div class="form-group">
+
+    <select  formControlName="selectOrg"  style="width: 190px"  id="Org"  placeholder="Password" [ngClass]="{'is-invalid' : registerForm.get('selectOrg').errors}">
+      <option value="" selected>Select the Organization</option>
+      <option *ngFor="let Orh of Org" [value]="Orh.name">
+        {{Orh.name}}
+      </option>
+      <div class="invalid-feedback"> Select the Organizations</div>
+    </select>
+  </div>-->
+
+  <div class="form-group">
+    <div class="" style="margin: auto;width: 50%;">
+    <ng-multiselect-dropdown
+    style="width: 190px"
+    [placeholder]="'select The Departement'"
+    [data]="dropdownList"
+    [(ngModel)]="selectedItems"
+    [settings]="dropdownSettings"
+  class="zz"
+  formControlName="selectOrg"
+  ></ng-multiselect-dropdown>
+</div>
+  </div>
+
+
+
+  <div class="form-group">
+
+    <select  formControlName="selectRolr"  style="width: 50%"  id="Rol" n placeholder="Password"  [ngClass]="{'is-invalid' : registerForm.get('selectRolr').errors}">
+      <option value="" selected>Select the Role</option>
+
+      <option *ngFor="let Role of RoleList"[value]="Role.value" >
+        {{Role.display}}
+      </option>
+      <div class="invalid-feedback"> Select the Role</div>
+    </select>
+  </div>
+  <div class="form-group">
+    <input formControlName="password" type="password" [ngClass]="{'is-invalid' : registerForm.get('password').errors && registerForm.get('password').touched}"
+      class="" placeholder="Password">
+    <div *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched" class="invalid-feedback">
+      Enter the password</div>
+    <div *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched" class="invalid-feedback">
+
+Password must not be less than four characters</div>
+    <div *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched" class="invalid-feedback">
+      The password should not exceed eight characters</div>
+  </div>
+  <div class="form-group">
+    <input formControlName="confirmPassword" type="password" [ngClass]="{'is-invalid' : registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched || registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')}"
+      class="" placeholder=" Re-password">
+    <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched">
+      Enter the password again</div>
+    <div class="invalid-feedback" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched">
+
+Does not match the password</div>
+  </div>
+
+
+
+  <div class="form-group text-center">
+    <button [disabled]="!registerForm.valid" style="font-weight:bold;font-family:'JF Flat';" class="btn btn-primary btn-lg" type="submit">Register</button>
+    <button (click)="cancel()" style="font-weight:bold;font-family:'JF Flat';" class="btn btn-primary btn-lg ml-2" type="button">Cancel
+      </button>
+  </div>
+
+</form>

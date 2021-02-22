@@ -1,0 +1,60 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                    <h2 class="text-white pb-3">Sent Message</h2>
+
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                        <div>
+              <!--l list-->
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+
+                                        <!-- row -->
+<!--[ngClass]="{'read':Isread()}"-->
+                                        <tr   *ngFor="let x of message"   >
+
+                                            <!-- label -->
+
+                                            <!--  [ngClass]="{'read':isReadch(x.id)}"star *appUnread="[x.id]" (click)="CheckIsRead(x.id)"*appUnread="[x.id]"-->
+
+                                            <td>
+                                              <a  ><span class="mb-0 text-muted">{{x?.subject}}</span></a>
+
+                                            </td>
+
+
+                                            <!-- Message -->
+
+                                            <!-- Subject -->
+                                            <td>
+                                              <span class="mb-0 text-muted">{{x?.content}}</span>
+                                          </td>
+                                          <td>
+                                            <span class="mb-0 text-muted">{{x?.name}}</span>
+                                        </td>
+                                            <!-- Time -->
+                                            <td class="text-muted">{{x?.messageSent|date:'medium'}}</td>
+
+                                        </tr>
+
+                                        <!-- row -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="cancel()" class="btn btn-danger waves-effect waves-light mt-3"> Back</button>
+</div>

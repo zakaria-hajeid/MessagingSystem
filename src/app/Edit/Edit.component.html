@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Note :</strong>
+       You must save the changes
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <form #editForm ="ngForm" id="editForm" (ngSubmit)="updateUser(user.id)" >
+        <h4>User Name</h4>
+        <textarea name="username" [(ngModel)]="user.username"
+        class="form-control "></textarea>
+        <h4>User</h4>
+
+        <textarea name="name" [(ngModel)]="user.name"
+        class="form-control "></textarea>
+        <h4>email</h4>
+        <textarea name="email" [(ngModel)]="user.email"
+        class="form-control "></textarea>
+        <h4>Phone</h4>
+        <textarea name="phone" [(ngModel)]="user.phone"
+        class="form-control"></textarea>
+
+        <button [disabled]="!editForm.dirty"  class="btn btn-success btn-block" type="submit">Save</button>
+
+        </form>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+.nav-link:hover, .nav-link:focus {
+  text-decoration: none;
+  color: pink !important;
+}
+
+.nav-link {
+color:white !important;
+}
+
+.btn-primary:enabled:hover {
+  text-decoration: none;
+  color: black !important;
+  background:pink !important
+}
+[type="radio"]:before{
+position: initial;
+}
+
+.z{
+  display: inline-block;
+}
+
+input,textarea{
+  width: 50%;
+}

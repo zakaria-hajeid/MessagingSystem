@@ -1,0 +1,101 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                    <h2 class="text-white pb-3">Your Mailbox</h2>
+                    <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" role="tab" aria-selected="true">
+                                <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                <span class="d-none d-md-block"> INBOX</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="delete-tab" data-toggle="tab" aria-controls="delete"  [routerLink]="['/Trash/',nameid]"  role="tab" aria-selected="false">
+                                <span class="d-block d-md-none"><i class="ti-trash"></i></span>
+                                <span class="d-none d-md-block">Trash</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="delete-tab" data-toggle="tab" aria-controls="delete"  [routerLink]="['/MessageSent/',nameid]"  role="tab" aria-selected="false">
+                              <span class="d-block d-md-none"><i class="ti-trash"></i></span>
+                              <span class="d-none d-md-block">Sent Message</span>
+                          </a>
+                      </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                        <div>
+                            <div class="row p-4 no-gutters align-items-center">
+
+                                <div>
+                                    <ul >
+
+                                        <li class="list-inline-item text-danger text-white">
+                                            <button (click)="putIntoTrash()" class="btn btn-circle btn-danger" >
+
+                                                <i class="fa fa-trash"></i>
+                                                <span class="ml-2 font-normal text-dark">Trash</span>
+                                              </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Mail list-->
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+
+                                        <!-- row -->
+<!--[ngClass]="{'read':Isread()}"-->
+                                        <tr   *ngFor="let x of MessageToDisplay"   >
+
+                                            <!-- label -->
+                                            <td >
+
+                                                <div  class="form-check ">
+                                                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                                                  (change)="onItemChange($event.target.checked,x.id)"
+                                                  >
+                                                   <!--<label class="custom-control-label" for="cst1">&nbsp;</label>-->
+                                                </div>
+                                            </td>
+
+                                            <!--  [ngClass]="{'read':isReadch(x.id)}"star *appUnread="[x.id]" (click)="CheckIsRead(x.id)"*appUnread="[x.id]"-->
+                                          <!--[ngClass]="{'read':Isread()}"-->
+                                            <td>
+                                              <a [routerLink]="['/MessageDetailComponent/',x.id]" [ngClass]="{'read':!x.MessagidisRead}" (click)="CheckIsRead(x.id)"  ><span class="mb-0 text-muted">{{x?.name}}</span></a>
+
+                                            </td>
+
+
+                                            <!-- Message -->
+
+                                            <!-- Subject -->
+                                            <td>
+                                              <span class="mb-0 text-muted">{{x?.subject}}</span>
+                                          </td>
+                                            <!-- Time -->
+                                            <td class="text-muted">{{x?.messageSent|date:'medium'}}</td>
+
+                                        </tr>
+
+                                        <!-- row -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="cancel()" class="btn btn-danger waves-effect waves-light mt-3"> Back</button>
+</div>

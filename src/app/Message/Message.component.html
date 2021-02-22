@@ -1,0 +1,39 @@
+<label class="z">To:</label>
+ <div class="" style="margin: auto;width: 50%;">
+<ng-multiselect-dropdown
+  [placeholder]="'search'"
+  [data]="dropdownList"
+  [(ngModel)]="selectedItems"
+  [settings]="dropdownSettings"
+class="zz"
+(click)="SetDrpoList()"
+>
+</ng-multiselect-dropdown>
+</div>
+<hr>
+<form style="margin-top:5%;" (ngSubmit)="SendMessage()" [formGroup]="MessageForm" class="rtl">
+
+  <div class="form-group">
+    <input formControlName="Subject" type="text"
+       placeholder="Subject ">
+
+  </div>
+  <div class="form-group">
+
+       <textarea formControlName="Content"  placeholder="Content " cols="150" row ="15" style="height: 200px;"></textarea>
+
+  </div>
+  <div class="form-group text-center">
+    <button style="font-weight:bold;font-family:'JF Flat';" class="btn btn-info btn-lg" type="submit">Send</button>
+    <button (click)="cancel()" style="font-weight:bold;font-family:'JF Flat';" class="btn btn-danger btn-lg ml-2" type="button">Cancel
+      </button>
+  </div>
+</form>
+
+
+
+<!--<button (click)="onSelectAllz()">x</button>
+<div *ngFor="let x of selectedItems">
+  <p>{{x.id}}</p>
+</div>-->
+

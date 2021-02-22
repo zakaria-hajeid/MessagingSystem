@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item" *appPermations="[Role]">
+      <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active"><button type="button"
+          class="btn btn-success"  >Create User</button></a>
+
+    </li>
+    <li class=" nav-item " routerLinkActive="active"*appAdmin="[Role]" >
+
+      <a class="nav-link" [routerLink]="['/Organizations']" routerLinkActive="active"><button type="button" class="btn btn-primary"
+          >Add Organizations</button></a>
+
+    </li>
+
+    <li class=" nav-item " routerLinkActive="active">
+
+      <a class="nav-link" [routerLink]="['/Message/',nameid]" routerLinkActive="active"><button type="button"
+          class="btn btn-warning">SendMessage</button></a>
+    </li>
+    <li class=" nav-item " routerLinkActive="active">
+
+      <a class="nav-link" [routerLink]="['/Inbox/',nameid]" routerLinkActive="active"><button type="button"
+          class="btn btn-secondary">Inbox</button></a>
+    </li>
+    <li class=" nav-item " routerLinkActive="active">
+
+      <a class="nav-link" [routerLink]="['/Departement']" routerLinkActive="active"><button type="button"
+          class="btn btn-info" *appPermations="[Role]">Departement Info</button></a>
+    </li>
+  <!--  <li class=" nav-item " routerLinkActive="active" *appPermations="[Role]">
+
+      <a class="nav-link" [routerLink]="['/Active']" routerLinkActive="active"><button type="button"
+          class="btn btn btn-warning">Active Users</button></a>
+    </li>-->
+    <li class=" nav-item " routerLinkActive="active">
+
+      <a class="nav-link" [routerLink]="['']" routerLinkActive="active"><button type="button" class="btn btn-danger"
+          (click)="loggedOut();">Log out</button></a>
+
+    </li>
+
+
+  </ul>
+</nav>
+<table class="table table-striped " *appPermations="[Role]">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+     <!-- <th scope="col">Organization Name</th>-->
+      <th scope="col">Edit</th>
+      <th scope="col">Active User</th>
+      <th scope="col">Permations</th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users"  >
+
+      <td>{{user.username}}</td>
+
+      <!--<td>{{user.organizationName}}</td>-->
+      <td><button type="button" class="btn btn-warning" [routerLink]="['/Edit/',user.id]">Edit</button></td>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="checkActive(user.id)"
+        (change)="onItemChange($event.target.checked,user.id)"
+        >
+
+      </div>
+      <td><button type="button" class="btn btn-success" [routerLink]="['/Permations/',user.id]">Add Permations</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="delet(user.id);">Delete</button></td>
+    </tr>
+
+  </tbody>
+</table>
